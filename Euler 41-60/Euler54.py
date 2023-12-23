@@ -23,7 +23,7 @@ def royalFlush(lineStr):
     elif i==15:
         return "P2"
 
-def straightFlush (lineStr):
+def straightFlush(lineStr):
     P1=True
     P2=True
     i=0
@@ -61,4 +61,15 @@ def straightFlush (lineStr):
     else:
         return "P2"
 
-print(straightFlush("Ac Qc Kc Tc Jc 7c 8c Tc 9c Jc"))
+def fourOfAKind(lineStr):
+    P1=True
+    P2=True
+    i=0
+    while i<16:
+        if lineStr[1+i]==lineStr[4+i]==lineStr[7+i]==lineStr[10+i]==lineStr[13+i]:
+            inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
+            inputs.sort()
+            if i==0:
+                inputs1=inputs
+            else:
+                inputs2=inputs
