@@ -31,6 +31,10 @@ def straightFlush (lineStr):
         if lineStr[1+i]==lineStr[4+i]==lineStr[7+i]==lineStr[10+i]==lineStr[13+i]:
             inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
             inputs.sort()
+            if i==0:
+                inputs1=inputs
+            else:
+                inputs2=inputs
             j=1
             while j<5:
                 if (inputs[j]=="T" and inputs[j-1]=="9") or (inputs[j]=="J" and inputs[j-1]=="T") or (inputs[j]=="Q" and inputs[j-1]=="J") or (inputs[j]=="K" and inputs[j-1]=="Q") or (inputs[j]=="A" and inputs[j-1]=="K") and int(inputs[j])!=int(inputs[j-1])+1:
@@ -48,7 +52,7 @@ def straightFlush (lineStr):
     if P1==P2 and P1==False:
         return False
     elif P1==P2 and P1:
-        if inputs[-2]>inputs[-17]:
+        if inputs1[-1]<inputs2[-1]:
             return "P2"
         else:
             return "P1"
