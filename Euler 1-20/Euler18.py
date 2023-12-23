@@ -1,0 +1,172 @@
+triangle=[[75],[95,64],[17,47,82],[18,35,87,10],[20,4,82,47,65],[19,1,23,75,3,34],[88,2,77,73,7,63,67],[99,65,4,28,6,16,70,33],[41,41,26,56,83,40,80,70,33],[41,48,72,33,47,32,37,16,94,29],[53,71,44,65,25,43,91,52,97,51,14],[70,11,33,28,77,73,17,78,39,68,17,57],[91,71,52,38,17,14,91,43,58,50,27,29,48],[63,66,4,68,89,53,67,30,73,16,69,87,40,31],[4,62,98,27,23,9,70,98,73,93,38,53,60,4,23]]
+highestSum=0
+Sum=0
+var1=0
+var2=0
+var3=0
+var4=0
+var5=0
+var6=0
+var7=0
+var8=0
+var9=0
+var10=0
+var11=0
+var12=0
+var13=0
+var14=0
+var15=0
+while var1==0:
+    var2=var1
+    var3=0
+    var4=0
+    var5=0
+    var6=0
+    var7=0
+    var8=0
+    var9=0
+    var10=0
+    var11=0
+    var12=0
+    var13=0
+    var14=0
+    var15=0
+    while var2==var1 or var2==var1+1:
+        var3=var2
+        var4=0
+        var5=0
+        var6=0
+        var7=0
+        var8=0
+        var9=0
+        var10=0
+        var11=0
+        var12=0
+        var13=0
+        var14=0
+        var15=0
+        while var3==var2 or var3==var2+1:
+            var4=var3
+            var5=0
+            var6=0
+            var7=0
+            var8=0
+            var9=0
+            var10=0
+            var11=0
+            var12=0
+            var13=0
+            var14=0
+            var15=0
+            while var4==var3 or var4==var3+1:
+                var5=var4
+                var6=0
+                var7=0
+                var8=0
+                var9=0
+                var10=0
+                var11=0
+                var12=0
+                var13=0
+                var14=0
+                var15=0
+                while var5==var4 or var5==var4+1:
+                    var6=var5
+                    var7=0
+                    var8=0
+                    var9=0
+                    var10=0
+                    var11=0
+                    var12=0
+                    var13=0
+                    var14=0
+                    var15=0
+                    while var6==var5 or var6==var5+1:
+                        var7=var6
+                        var8=0
+                        var9=0
+                        var10=0
+                        var11=0
+                        var12=0
+                        var13=0
+                        var14=0
+                        var15=0
+                        while var7==var6 or var7==var6+1:
+                            var8=var7
+                            var9=0
+                            var10=0
+                            var11=0
+                            var12=0
+                            var13=0
+                            var14=0
+                            var15=0
+                            while var8==var7 or var8==var7+1:
+                                var9=var8
+                                var10=0
+                                var11=0
+                                var12=0
+                                var13=0
+                                var14=0
+                                var15=0
+                                while var9==var8 or var9==var8+1:
+                                    var10=var9
+                                    var11=0
+                                    var12=0
+                                    var13=0
+                                    var14=0
+                                    var15=0
+                                    while var10==var9 or var10==var9+1:
+                                        var11=var10
+                                        var12=0
+                                        var13=0
+                                        var14=0
+                                        var15=0
+                                        while var11==var10 or var11==var10+1:
+                                            var12=var11
+                                            var13=0
+                                            var14=0
+                                            var15=0
+                                            while var12==var11 or var12==var11+1:
+                                                var13=var12
+                                                var14=0
+                                                var15=0
+                                                while var13==var12 or var13==var12+1:
+                                                    var14=var13
+                                                    var15=0
+                                                    while var14==var13 or var14==var13+1:
+                                                        var15=var14
+                                                        while var15==var14 or var15==var14+1:
+                                                            Sum+=triangle[0][var1]
+                                                            Sum+=triangle[1][var2]
+                                                            Sum+=triangle[2][var3]
+                                                            Sum+=triangle[3][var4]
+                                                            Sum+=triangle[4][var5]
+                                                            Sum+=triangle[5][var6]
+                                                            Sum+=triangle[6][var7]
+                                                            Sum+=triangle[7][var8]
+                                                            Sum+=triangle[8][var9]
+                                                            Sum+=triangle[9][var10]
+                                                            Sum+=triangle[10][var11]
+                                                            Sum+=triangle[11][var12]
+                                                            Sum+=triangle[12][var13]
+                                                            Sum+=triangle[13][var14]
+                                                            Sum+=triangle[14][var15]
+                                                            if highestSum<Sum:
+                                                                highestSum=Sum
+                                                            Sum=0
+                                                            var15+=1
+                                                        var14+=1
+                                                    var13+=1
+                                                var12+=1
+                                            var11+=1
+                                        var10+=1
+                                    var9+=1
+                                var8+=1
+                            var7+=1
+                        var6+=1
+                    var5+=1
+                var4+=1
+            var3+=1
+        var2+=1
+    var1+=1
+print(highestSum)
