@@ -66,4 +66,4 @@ def fourOfAKind(lineStr):
     P2=True
     i=0
     while i<16:
-        
+        i+=1
