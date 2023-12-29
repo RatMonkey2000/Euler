@@ -49,10 +49,12 @@ def straightFlush(lineStr):
             else:
                 P2=False
         i+=15
+    print(inputs1)
+    print(inputs2)
     if P1==P2 and P1==False:
         return False
     elif P1==P2 and P1:
-        if inputs1[-1]<inputs2[-1]:
+        if inputs2[-1]=="A" or (inputs2[-1]=="K" and inputs1[-1]!="A") or inputs1[-1]<inputs2[-1]:
             return "P2"
         else:
             return "P1"
@@ -66,4 +68,14 @@ def fourOfAKind(lineStr):
     P2=True
     i=0
     while i<16:
+        if lineStr[1+i]==lineStr[4+i]==lineStr[7+i]==lineStr[10+i]==lineStr[13+i]:
+            inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
+            inputs.sort()
+            if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]) or (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]):
+                if i==0:
+                    P1=False
+                else:
+                    P2=False
         i+=1
+
+print(straightFlush("5C 6C 7C 8C 9C 6D 8D 9D 7D TD"))
