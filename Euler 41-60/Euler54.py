@@ -16,11 +16,9 @@ def royalFlush(lineStr):
         i+=15
     if P1==P2 and P1==False:
         return False
-    elif P1==P2 and P2:
-        return True
     elif P1==True:
         return "P1"
-    elif i==15:
+    else:
         return "P2"
 
 def straightFlush(lineStr):
@@ -49,12 +47,14 @@ def straightFlush(lineStr):
             else:
                 P2=False
         i+=15
-    print(inputs1)
-    print(inputs2)
+    if not (inputs1==["2","3","4","5","6"] or inputs1==["3","4","5","6","7"] or inputs1==["4","5","6","7","8"] or inputs1==["5","6","7","8","9"] or inputs1==["6","7","8","9","T"] or inputs1==["7","8","9","T","J"] or inputs1==["8","9","T","J","Q"] or inputs1==["9","T","J","Q","K"]):
+        P1=False
+    if not (inputs2==["2","3","4","5","6"] or inputs2==["3","4","5","6","7"] or inputs2==["4","5","6","7","8"] or inputs2==["5","6","7","8","9"] or inputs2==["6","7","8","9","T"] or inputs2==["7","8","9","T","J"] or inputs2==["8","9","T","J","Q"] or inputs2==["9","T","J","Q","K"]):
+        P2=False
     if P1==P2 and P1==False:
         return False
     elif P1==P2 and P1:
-        if inputs2[-1]=="A" or (inputs2[-1]=="K" and inputs1[-1]!="A") or inputs1[-1]<inputs2[-1]:
+        if inputs2[-1]=="A" or (inputs2[-1]=="K" and inputs1[-1]!="A") or (inputs2[-1]=="Q" and inputs1[-1]!="A" and (inputs1[-1]!="K")) or (inputs2[-1]=="J" and inputs1[-1]!="A" and (inputs1[-1]!="K") and (inputs1[-1]!="Q")) or (inputs2[-1]=="T" and inputs1[-1]!="A" and (inputs1[-1]!="K") and (inputs1[-1]!="Q") and (inputs1[-1]!="J")) or inputs1[-1]<inputs2[-1]:
             return "P2"
         else:
             return "P1"
@@ -78,4 +78,4 @@ def fourOfAKind(lineStr):
                     P2=False
         i+=1
 
-print(straightFlush("5C 6C 7C 8C 9C 6D 8D 9D 7D TD"))
+print(straightFlush("5C 7H JD AS KC 8D 9D TS 2S 5H"))
