@@ -2,6 +2,7 @@ from linecache import getline
 from itertools import permutations
 file=open("C:/Users/kazbi/Downloads/Euler54 Poker Hands.txt", "r")
 i=0
+
 def royalFlush(lineStr):
     P1=False
     P2=False
@@ -26,13 +27,13 @@ def straightFlush(lineStr):
     P2=True
     i=0
     while i<16:
+        inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
+        inputs.sort()
+        if i==0:
+            inputs1=inputs
+        else:
+            inputs2=inputs
         if lineStr[1+i]==lineStr[4+i]==lineStr[7+i]==lineStr[10+i]==lineStr[13+i]:
-            inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
-            inputs.sort()
-            if i==0:
-                inputs1=inputs
-            else:
-                inputs2=inputs
             j=1
             while j<5:
                 if (inputs[j]=="T" and inputs[j-1]=="9") or (inputs[j]=="J" and inputs[j-1]=="T") or (inputs[j]=="Q" and inputs[j-1]=="J") or (inputs[j]=="K" and inputs[j-1]=="Q") or (inputs[j]=="A" and inputs[j-1]=="K") and int(inputs[j])!=int(inputs[j-1])+1:
@@ -64,18 +65,34 @@ def straightFlush(lineStr):
         return "P2"
 
 def fourOfAKind(lineStr):
-    P1=True
-    P2=True
+    P1=False
+    P2=False
     i=0
     while i<16:
-        if lineStr[1+i]==lineStr[4+i]==lineStr[7+i]==lineStr[10+i]==lineStr[13+i]:
-            inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
-            inputs.sort()
-            if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]) or (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]):
-                if i==0:
-                    P1=False
+        inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
+        inputs.sort()
+        if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]) or (inputs[1]==inputs[2] and inputs[1]==inputs[3] and inputs[1]==inputs[4]):
+            if i==0:
+                inputs1=inputs[2]
+                P1=True
+            else:
+                if P1==True:
+                    if inputs[2]>inputs1:
+                        P2=True
+                        P1=False
+                    elif inputs[2]==inputs1:
+                        return False
                 else:
-                    P2=False
+                    P2==True
         i+=1
+    if P1:
+        return "P1"
+    elif P2:
+        return "P2"
+    else:
+        return False
 
-print(straightFlush("5C 7H JD AS KC 8D 9D TS 2S 5H"))
+def fullHouse(lineStr):
+    print("Goose")
+    
+print(fourOfAKind("5C 5H 5D 5S KC 6D 6D 5S 6S 6H"))
