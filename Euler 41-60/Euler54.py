@@ -93,6 +93,14 @@ def fourOfAKind(lineStr):
         return False
 
 def fullHouse(lineStr):
-    print("Goose")
+    P1=True
+    P2=True
+    i=0
+    while i<16:
+        inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
+        inputs.sort()
+        if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[3]==inputs[4]) or (inputs[0]==inputs[1] and inputs[3]==inputs[2] and inputs[3]==inputs[4]):
+            print("Goose")
+        i+=15
     
 print(fourOfAKind("5C 5H 5D 5S KC 6D 6D 5S 6S 6H"))
