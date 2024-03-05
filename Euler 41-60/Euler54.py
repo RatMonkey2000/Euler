@@ -71,6 +71,7 @@ def fourOfAKind(lineStr):
     while i<16:
         inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
         inputs.sort()
+        print(inputs)
         if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[0]==inputs[3]) or (inputs[1]==inputs[2] and inputs[1]==inputs[3] and inputs[1]==inputs[4]):
             if i==0:
                 inputs1=inputs[2]
@@ -83,8 +84,8 @@ def fourOfAKind(lineStr):
                     elif inputs[2]==inputs1:
                         return False
                 else:
-                    P2==True
-        i+=1
+                    P2=True
+        i+=15
     if P1:
         return "P1"
     elif P2:
@@ -93,14 +94,51 @@ def fourOfAKind(lineStr):
         return False
 
 def fullHouse(lineStr):
-    P1=True
-    P2=True
+    P1=False
+    P2=False
     i=0
     while i<16:
         inputs=[lineStr[0+i],lineStr[3+i],lineStr[6+i],lineStr[9+i],lineStr[12+i]]
         inputs.sort()
         if (inputs[0]==inputs[1] and inputs[0]==inputs[2] and inputs[3]==inputs[4]) or (inputs[0]==inputs[1] and inputs[3]==inputs[2] and inputs[3]==inputs[4]):
-            print("Goose")
+            if i==0:
+                P1=True
+                P1M=inputs[2]
+            else:
+                P2=True
+                P2M=inputs[2]
         i+=15
+    if P1 and P2 and P1M>P2M:
+        return "P1"
+    elif P1 and P2 and P1M<P2M:
+        return "P2"
+    elif P1:
+        return "P1"
+    elif P2:
+        return "P2"
+    else:
+        return False
     
-print(fourOfAKind("5C 5H 5D 5S KC 6D 6D 5S 6S 6H"))
+def flush(lineStr):
+    if lineStr[1]==lineStr[4]==lineStr[7]==lineStr[10]==lineStr[13]:
+        return "P1"
+    elif lineStr[16]==lineStr[19]==lineStr[22]==lineStr[25]==lineStr[28]:
+        return "P2"
+    else:
+        return False
+
+def straight(lineStr):
+    P1==False
+    P2==False
+    i=0
+    while i<16:
+        inputs=[lineStr[0+i],lineStr[3+i],int(lineStr[6+i]),int(lineStr[9+i]),int(lineStr[12+i])]
+        inputs.sort()
+        if inputs==["2","3","4","5","6"] or inputs==["3","4","5","6","7"] or inputs==["4","5","6","7","8"] or inputs==["5","6","7","8","9"] or inputs==["6","7","8","9","T"] or inputs==["7","8","9","T","J"] or inputs==["8","9","T","Q","K"] or inputs==["9","T","J","Q","K"] or inputs==["T","J","Q","K","A"]:
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        i+=15
+
+print(fourOfAKind("TC TC TC 3C TC QC 7C QF QG QH"))
