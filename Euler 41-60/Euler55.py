@@ -34,6 +34,6 @@ Sum=0
 while num<10001:
     if lychrel(num):
         print(num)
-        Sum+=1
+        Sum+=num
     num+=1
 print(Sum)
