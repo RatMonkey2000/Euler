@@ -30,10 +30,9 @@ def lychrel(numI):
 
 
 num=1
-Sum=0
+totNum=0
 while num<10001:
     if lychrel(num):
-        print(num)
-        Sum+=num
+        totNum+=1
     num+=1
-print(Sum)
+print(totNum)
