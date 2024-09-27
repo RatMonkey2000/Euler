@@ -2,7 +2,7 @@ from fractions import Fraction
 def isTopHeavy(numK):
     frac=Fraction(numK)
     print(frac)
-    if len(str(frac[0]))>len(str(frac[1])):
+    if len(str(frac))>len(str(frac)):
         return True
     return False
 

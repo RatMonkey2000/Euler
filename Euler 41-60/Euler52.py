@@ -12,8 +12,6 @@ def multDig(numK):
 
 num=1
 while num<1000000000000:
-    if num%1000==0:
-        print(num)
     if multDig(num):
         print(num)
         break
