@@ -16,3 +16,27 @@ def prime(numK):
         return True
     return False
 
+def perPrime():
+    l=0
+    numPrime=0
+    while l<len(diagonals):
+        if prime(diagonals[l]):
+            numPrime+=1
+        l+=1
+
+def Dia(limit):
+    diagonals=[1]
+    n=0
+    x=0
+    m=2
+    numK=3
+    while x<limit:
+        n=1
+        while n<4:
+            diagonals.append(numK)
+            numK+=m
+            n+=1
+        m+=2
+        x+=1
+        perPrime()
+print("Goose")
