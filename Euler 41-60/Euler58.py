@@ -44,4 +44,4 @@ def Dia(limit):
         m+=2
         x+=1
     print(diagonals)
-Dia(2)
+Dia(3)
