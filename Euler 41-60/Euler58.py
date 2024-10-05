@@ -1,6 +1,6 @@
 k=5
 primes=[2,3]
-while k<100000:
+while k<10000:
     isPrime=True
     j=0
     while j<len(primes) and isPrime:
@@ -16,27 +16,32 @@ def prime(numK):
         return True
     return False
 
+print("Done")
+
 def perPrime():
+    diagonals=[]
     l=0
     numPrime=0
     while l<len(diagonals):
         if prime(diagonals[l]):
             numPrime+=1
         l+=1
+    
 
 def Dia(limit):
-    diagonals=[1]
-    n=0
-    x=0
+    diagonals=[]
+    numJ=1
     m=2
-    numK=3
+    x=0
+    n=0
     while x<limit:
-        n=1
+        n=0
         while n<4:
-            diagonals.append(numK)
-            numK+=m
+            diagonals.append(numJ)
+            numJ+=m
             n+=1
+            print(m)
         m+=2
         x+=1
-        perPrime()
-print("Goose")
+    print(diagonals)
+Dia(2)
