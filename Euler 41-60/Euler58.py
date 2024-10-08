@@ -1,7 +1,8 @@
 from math import sqrt
+import sympy
 k=5
 primes=[2,3]
-while k<1000000:
+while k<10000000:
     isPrime=True
     j=0
     while j<len(primes) and isPrime and primes[j]<sqrt(k):
@@ -11,6 +12,8 @@ while k<1000000:
     if isPrime:
         primes.append(k)
     k+=2
+
+print("Goose")
 
 def prime(numK):
     if numK in primes:
