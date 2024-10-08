@@ -46,9 +46,7 @@ def Dia(limit):
 num=3
 solved=False
 while not solved:
-    print(Dia(num))
     x=round(Dia(num))
-    print(x)
     if Dia(num)<10:
         print(num)
         solved=True
