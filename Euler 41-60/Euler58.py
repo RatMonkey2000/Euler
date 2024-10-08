@@ -1,9 +1,10 @@
+from math import sqrt
 k=5
 primes=[2,3]
-while k<10000:
+while k<1000000:
     isPrime=True
     j=0
-    while j<len(primes) and isPrime:
+    while j<len(primes) and isPrime and primes[j]<sqrt(k):
         if k%primes[j]==0:
             isPrime=False
         j+=1
@@ -26,7 +27,7 @@ def perPrime(diagonals):
     return(numPrime/len(diagonals)*100)
     
 
-def Dia(limit):
+def dia(limit):
     limit=(limit-1)/2
     diagonals=[1]
     numJ=1
@@ -46,8 +47,10 @@ def Dia(limit):
 num=3
 solved=False
 while not solved:
-    x=round(Dia(num))
-    if Dia(num)<10:
+    print(num)
+    x=round(dia(num))
+    print(dia(num))
+    if dia(num)<10:
         print(num)
         solved=True
     num+=2
