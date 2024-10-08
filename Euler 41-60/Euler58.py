@@ -27,30 +27,20 @@ def perPrime(diagonals):
     return(numPrime/len(diagonals)*100)
     
 
-def dia(limit):
-    limit=(limit-1)/2
-    diagonals=[1]
-    numJ=1
-    m=2
+def dia(diagonals):
+    numJ=diagonals[-1]
+    m=len(diagonals)/2+1.5
     x=0
     n=0
-    while x<limit:
-        n=0
-        while n<4:
-            numJ+=m
-            diagonals.append(numJ)
-            n+=1
-        m+=2
-        x+=1
+    while n<4:
+        numJ+=m
+        diagonals.append(numJ)
+        n+=1
     return(perPrime(diagonals))
 
 num=3
 solved=False
+diagonals=[1]
 while not solved:
-    print(num)
-    x=round(dia(num))
-    print(dia(num))
-    if dia(num)<10:
-        print(num)
+    if dia(diagonals)<10:
         solved=True
-    num+=2
