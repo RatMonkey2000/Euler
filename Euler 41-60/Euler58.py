@@ -1,8 +1,12 @@
 from math import sqrt
-import sympy
 k=5
+numPrime=10000
 primes=[2,3]
-while k<10000000:
+while k<numPrime:
+    if k-1%(numPrime/10)==0:
+        print((k-1)/(numPrime-1))
+    if k==1001:
+        print("sdf")
     isPrime=True
     j=0
     while j<len(primes) and isPrime and primes[j]<sqrt(k):
@@ -14,7 +18,6 @@ while k<10000000:
     k+=2
 
 print("Goose")
-
 def prime(numK):
     if numK in primes:
         return True
@@ -33,7 +36,6 @@ def perPrime(diagonals):
 def dia(diagonals):
     numJ=diagonals[-1]
     m=len(diagonals)/2+1.5
-    x=0
     n=0
     while n<4:
         numJ+=m
