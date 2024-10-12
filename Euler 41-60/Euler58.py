@@ -44,5 +44,7 @@ num=3
 solved=False
 diagonals=[1]
 while not solved:
-    if dia(diagonals)<10:
+    x=dia(diagonals)
+    print(x)
+    if x<10:
         solved=True
