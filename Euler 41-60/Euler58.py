@@ -1,12 +1,10 @@
 from math import sqrt
 k=5
-numPrime=10000
+numPrime=100000
 primes=[2,3]
 while k<numPrime:
-    if k-1%(numPrime/10)==0:
-        print((k-1)/(numPrime-1))
-    if k==1001:
-        print("sdf")
+    if (k-1)%(numPrime/10)==0:
+        print(int((k-1)/(numPrime/10)))
     isPrime=True
     j=0
     while j<len(primes) and isPrime and primes[j]<sqrt(k):
@@ -17,7 +15,6 @@ while k<numPrime:
         primes.append(k)
     k+=2
 
-print("Goose")
 def prime(numK):
     if numK in primes:
         return True
