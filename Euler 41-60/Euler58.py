@@ -1,15 +1,19 @@
+from math import sqrt
+import sympy
 k=5
 primes=[2,3]
-while k<10000:
+while k<10000000:
     isPrime=True
     j=0
-    while j<len(primes) and isPrime:
+    while j<len(primes) and isPrime and primes[j]<sqrt(k):
         if k%primes[j]==0:
             isPrime=False
         j+=1
     if isPrime:
         primes.append(k)
     k+=2
+
+print("Goose")
 
 def prime(numK):
     if numK in primes:
@@ -26,30 +30,20 @@ def perPrime(diagonals):
     return(numPrime/len(diagonals)*100)
     
 
-def Dia(limit):
-    limit=(limit-1)/2
-    diagonals=[1]
-    numJ=1
-    m=2
+def dia(diagonals):
+    numJ=diagonals[-1]
+    m=len(diagonals)/2+1.5
     x=0
     n=0
-    while x<limit:
-        n=0
-        while n<4:
-            numJ+=m
-            diagonals.append(numJ)
-            n+=1
-        m+=2
-        x+=1
+    while n<4:
+        numJ+=m
+        diagonals.append(numJ)
+        n+=1
     return(perPrime(diagonals))
 
 num=3
 solved=False
+diagonals=[1]
 while not solved:
-    print(Dia(num))
-    x=round(Dia(num))
-    print(x)
-    if Dia(num)<10:
-        print(num)
+    if dia(diagonals)<10:
         solved=True
-    num+=2
