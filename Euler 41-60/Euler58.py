@@ -1,6 +1,6 @@
 from math import sqrt
 k=5
-numPrime=100000
+numPrime=10000000
 primes=[2,3]
 while k<numPrime:
     if (k-1)%(numPrime/10)==0:
@@ -20,31 +20,29 @@ def prime(numK):
         return True
     return False
 
-def perPrime(diagonals):
-    l=0
+def percPrime(diagonalsK):
+    j=0
     numPrime=0
-    while l<len(diagonals):
-        if prime(diagonals[l]):
+    while j<len(diagonalsK):
+        if prime(diagonalsK[j]):
             numPrime+=1
-        l+=1
-    return(numPrime/len(diagonals)*100)
-    
+        j+=1
+    return(numPrime/len(diagonalsK)*100)
 
-def dia(diagonals):
-    numJ=diagonals[-1]
-    m=len(diagonals)/2+1.5
-    n=0
-    while n<4:
-        numJ+=m
-        diagonals.append(numJ)
-        n+=1
-    return(perPrime(diagonals))
+def addLayer():
+    j=0
+    x=sqrt(diagonal[-1])+1
+    while j<4:
+        diagonal.append(diagonal[-1]+x)
+        j+=1
 
-num=3
+diagonal=[1]
+num=1
 solved=False
-diagonals=[1]
 while not solved:
-    x=dia(diagonals)
-    print(x)
-    if x<10:
+    num+=2
+    addLayer()
+    print(percPrime(diagonal))
+    if percPrime(diagonal)<10:
+        print(num)
         solved=True
