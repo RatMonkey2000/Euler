@@ -1,5 +1,4 @@
 from math import sqrt
-import sympy
 k=5
 primes=[2,3]
 while k<10000000:
