@@ -15,6 +15,7 @@ while k<numPrime:
         primes.append(k)
     k+=2
 
+print("Goose")
 def prime(numK):
     if numK in primes:
         return True
