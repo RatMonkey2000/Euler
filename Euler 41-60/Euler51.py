@@ -1,7 +1,20 @@
-from itertools import permutations
-import ast
-primes=open(r"C:\users\kazbi\Downloads\Primes.txt","r")
-primes=ast.literal_eval(primes.read())
+from itertools import combinations
+from math import sqrt
+k=5
+numPrime=10000
+primes=[2,3]
+while k<numPrime:
+    if (k-1)%(numPrime/10)==0:
+        print(int((k-1)/(numPrime/10)))
+    isPrime=True
+    j=0
+    while j<len(primes) and isPrime and primes[j]<sqrt(k):
+        if k%primes[j]==0:
+            isPrime=False
+        j+=1
+    if isPrime:
+        primes.append(k)
+    k+=2
 
 def prime(numK):
     if numK in primes:
@@ -11,7 +24,6 @@ def prime(numK):
 def replacePos(numJ,j):
     numCounter=0
     numJ=str(numJ)
-    #j=str(j)
     i=0
     while i<10:
         k=0
@@ -21,21 +33,23 @@ def replacePos(numJ,j):
             k+=1
         if prime(int(numJChange)):
             numCounter+=1
+        print(numCounter)
         i+=1
-    if numCounter==8:
+    if numCounter==6:
         return True
     return False
 
 def allReplacePos(numP):
-    p=1
+    p=0
     permOptions=[]
-    while p<len(str(numP))+1:
+    while p<len(str(numP)):
         permOptions.append(p)
         p+=1
     p=1
     while p<len(str(numP))+1:
-        perm=list(permutations(permOptions,p))
+        perm=list(combinations(permOptions,p))
         perm=[list(ele) for ele in perm]
+        print(perm)
         m=0
         while m<len(perm):
             if replacePos(numP,perm[m]):
@@ -45,10 +59,11 @@ def allReplacePos(numP):
     return False
 
 
-num=60000
+"""num=1
 while num<len(primes):
     print(num)
     if allReplacePos(num):
         print(num)
         break
-    num+=1
+    num+=1"""
+print(allReplacePos(13))
