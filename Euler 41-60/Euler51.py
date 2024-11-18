@@ -59,6 +59,7 @@ def allReplacePos(numP):
 
 num=1
 while num<len(primes):
+    print(num)
     if allReplacePos(num):
         print(num)
         break
