@@ -1,7 +1,7 @@
 from itertools import combinations
 from math import sqrt
 k=5
-numPrime=10000
+numPrime=100000
 primes=[2,3]
 while k<numPrime:
     if (k-1)%(numPrime/10)==0:
@@ -33,9 +33,8 @@ def replacePos(numJ,j):
             k+=1
         if prime(int(numJChange)):
             numCounter+=1
-        print(numCounter)
         i+=1
-    if numCounter==6:
+    if numCounter==8:
         return True
     return False
 
@@ -49,7 +48,6 @@ def allReplacePos(numP):
     while p<len(str(numP))+1:
         perm=list(combinations(permOptions,p))
         perm=[list(ele) for ele in perm]
-        print(perm)
         m=0
         while m<len(perm):
             if replacePos(numP,perm[m]):
@@ -59,11 +57,9 @@ def allReplacePos(numP):
     return False
 
 
-"""num=1
+num=1
 while num<len(primes):
-    print(num)
     if allReplacePos(num):
         print(num)
         break
-    num+=1"""
-print(allReplacePos(13))
+    num+=1
