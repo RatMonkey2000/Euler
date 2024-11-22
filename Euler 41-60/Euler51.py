@@ -8,7 +8,7 @@ while k<numPrime:
         print(int((k-1)/(numPrime/10)))
     isPrime=True
     j=0
-    while j<len(primes) and isPrime and primes[j]<sqrt(k):
+    while j<len(primes) and isPrime and primes[j]<=sqrt(k):
         if k%primes[j]==0:
             isPrime=False
         j+=1
