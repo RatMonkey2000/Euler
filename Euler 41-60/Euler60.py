@@ -34,4 +34,3 @@ def ifWorks(set):
         i+=1
     return works
 
-
