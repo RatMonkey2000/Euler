@@ -29,4 +29,4 @@ def isHeptagonal(numJ):
     return False
 
 def isOctagonal(numJ):
-    
+    numJ=2/6+sqrt(n/3+)
