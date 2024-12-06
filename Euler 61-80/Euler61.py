@@ -34,50 +34,77 @@ def isOctagonal(numJ):
         return True
     return False
 
-def works(listJ)
+def works(listJ):
     done=[3,4,5,6,7,8]
     i=0
-    while i<6:
+    while i<len(listJ):
         if isTrianglular(listJ[i]):
             listJ.pop(i)
-            done.remove(3)
+            if 3 in done:
+                done.remove(3)
+            else:
+                return False
         i+=1
     i=0
-    while i<6:
+    while i<len(listJ):
         if isSquare(listJ[i]):
             listJ.pop(i)
             if 4 in done:
                 done.remove(4)
+            else:
+                return False
         i+=1
     i=0
-    while i<6:
+    while i<len(listJ):
         if isPentagonal(listJ[i]):
             listJ.pop(i)
             if 5 in done:
                 done.remove(5)
+            else:
+                return False
         i+=1
     i=0
-    while i<6:
+    while i<len(listJ):
         if isHexagonal(listJ[i]):
             listJ.pop(i)
             if 6 in done:
                 done.remove(6)
+            else:
+                return False
         i+=1
     i=0
-    while i<6:
+    while i<len(listJ):
         if isHeptagonal(listJ[i]):
             listJ.pop(i)
             if 7 in done:
                 done.remove(7)
+            else:
+                return False
         i+=1
     i=0
-    while i<6:
+    while i<len(listJ):
         if isOctagonal(listJ[i]):
             listJ.pop(i)
             if 8 in done:
                 done.remove(8)
+            else:
+                return False
         i+=1
     if len(done)==0:
         return True
     return False
 
+
+def numToList(number):
+    number=str(number)
+    list=[int(number[:4]),int(number[2:6]),int(number[4:8]),int(number[6:10]),int(number[8:12]),int(number[10:14]),int(number[-2]+number[-1]+number[:2])]
+    return list
+
+num=11111111111111
+while num<100000000000000:
+    numM=numToList(num)
+    print(numM)
+    if works(numM):
+        print(numM)
+        break
+    num+=1
