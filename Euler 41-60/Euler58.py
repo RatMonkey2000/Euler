@@ -1,10 +1,8 @@
 from math import sqrt
 k=5
-numPrime=50
+numPrime=500000
 primes=[2,3]
 while k<numPrime:
-    if (k-1)%(numPrime/10)==0:
-        print(int((k-1)/(numPrime/10)))
     isPrime=True
     j=0
     while j<len(primes) and isPrime and primes[j]<=sqrt(k):
@@ -27,22 +25,27 @@ def percPrime(diagonalsK):
         if prime(diagonalsK[j]):
             numPrime+=1
         j+=1
-    return(numPrime/len(diagonalsK)*100)
+    return(round(numPrime/len(diagonalsK)*100))
 
-def addLayer():
+
+
+def addLayer(diagonalJ):
     j=0
-    x=sqrt(diagonal[-1])+1
+    x=int(sqrt(diagonalJ[-1])+1)
     while j<4:
-        diagonal.append(diagonal[-1]+x)
+        diagonalJ.append(diagonalJ[-1]+x)
         j+=1
+    return diagonalJ
+
 
 diagonal=[1]
 num=1
 solved=False
 while not solved:
     num+=2
-    addLayer()
-    print(percPrime(diagonal))
-    if percPrime(diagonal)<10:
+    diagonal=addLayer(diagonal)
+    m=percPrime(diagonal)
+    print(m)
+    if m<10:
         print(num)
         solved=True
