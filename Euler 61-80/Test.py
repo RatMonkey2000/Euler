@@ -1,75 +1,53 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from matplotlib.widgets import TextBox
+from matplotlib.widgets import Button, TextBox
 
-# Create a meshgrid for the complex plane with a 40x40 grid resolution
-real_vals = np.linspace(-10, 10, 20)
-imag_vals = np.linspace(-10, 10, 20)
-X, Y = np.meshgrid(real_vals, imag_vals)
-Z = X + 1j * Y  # Complex plane meshgrid
+# Function to generate a default 3D plot
+def plot_3d(ax, func, x_range, y_range, resolution=50):
+    ax.clear()
+    x = np.linspace(*x_range, resolution)
+    y = np.linspace(*y_range, resolution)
+    X, Y = np.meshgrid(x, y)
+    Z = func(X, Y)
+    ax.plot_surface(X, Y, Z, cmap='viridis', edgecolor='k', alpha=0.8)
+    ax.set_xlabel('X-axis')
+    ax.set_ylabel('Y-axis')
+    ax.set_zlabel('Z-axis')
+    plt.draw()
 
-# Define initial function: |z|^2
-def initial_function(z):
-    return np.abs(z)**2
-
-# Plot setup
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_subplot(111, projection='3d')
-
-# Initial plot
-output = initial_function(Z)
-surface = ax.plot_surface(X, Y, output, cmap='viridis', edgecolor='none')
-ax.set_xlabel('Real Part')
-ax.set_ylabel('Imaginary Part')
-ax.set_zlabel('Output')
-ax.set_title('Interactive 3D Plot of a Complex Function')
-
-# Set 40x40x40 scale limits for the plot
-ax.set_xlim(-20, 20)
-ax.set_ylim(-20, 20)
-ax.set_zlim(0, 40)
-
-# Color bar for the surface
-cbar = fig.colorbar(surface, ax=ax, shrink=0.5, aspect=10)
-cbar.set_label('Function Output')
-
-# Function to update the plot when a new function is entered
-def update_plot(expression):
-    global Z, surface, cbar
+# Function for evaluating user-defined equations
+def evaluate_function(equation, x, y):
     try:
-        # Evaluate the user-entered expression for Z
-        new_output = eval(expression, {"z": Z, "np": np})
-
-        # Clear the current plot and redraw with the new function
-        ax.clear()
-        surface = ax.plot_surface(X, Y, np.real(new_output), cmap='viridis', edgecolor='none')
-        ax.set_xlabel('Real Part')
-        ax.set_ylabel('Imaginary Part')
-        ax.set_zlabel('Output')
-        ax.set_title(f'3D Plot of {expression}')
-
-        # Set limits for the updated plot
-        ax.set_xlim(-20, 20)
-        ax.set_ylim(-20, 20)
-        ax.set_zlim(0, 40)
-
-        # Update color bar
-        if cbar:
-            cbar.remove()
-        cbar = fig.colorbar(surface, ax=ax, shrink=0.5, aspect=10)
-        cbar.set_label('Function Output')
-
-        fig.canvas.draw_idle()
+        z = eval(equation)
     except Exception as e:
-        print(f"Error in expression: {e}")
+        z = np.zeros_like(x)
+        print(f"Error evaluating function: {e}")
+    return z
 
-# Add a text box widget to enter a new function
-text_box_ax = plt.axes([0.2, 0.01, 0.6, 0.05])
-text_box = TextBox(text_box_ax, 'Function (f(z)): ', initial='np.abs(z)**2')
+# Callback for updating the plot
+def update_plot(event):
+    equation = textbox.text
+    plot_3d(ax, lambda x, y: evaluate_function(equation, x, y), (-10, 10), (-10, 10))
 
-# Update the plot whenever a new function is entered
-text_box.on_submit(update_plot)
+# Initialize the figure and 3D axis
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+plt.subplots_adjust(bottom=0.2)
+
+# Add buttons and textbox for user interaction
+textbox_ax = plt.axes([0.1, 0.05, 0.7, 0.075])
+textbox = TextBox(textbox_ax, "Enter function z=f(x,y): ", initial="x**2 - y**2")
+
+button_ax = plt.axes([0.85, 0.05, 0.1, 0.075])
+button = Button(button_ax, 'Plot')
+
+# Plot default function
+plot_3d(ax, lambda x, y: x**2 - y**2, (-10, 10), (-10, 10))
+
+# Set button callback
+button.on_clicked(update_plot)
 
 # Display the interactive plot
 plt.show()
+
