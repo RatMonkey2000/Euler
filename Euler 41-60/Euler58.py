@@ -1,6 +1,6 @@
 from math import sqrt
 k=5
-numPrime=500000
+numPrime=1100000
 primes=[2,3]
 while k<numPrime:
     isPrime=True
