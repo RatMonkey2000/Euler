@@ -9,14 +9,15 @@ while i<len(handsA):
     handsA[i]=handsA[i][:-1]
     i+=1
 
-
-cards=['2','3','4','5','6','7','8','9','T','J','Q','K','A']
-
 i=0
 hands=[]
 while i<len(handsA):
     hands.append([handsA[i][:14],handsA[i][-14:]])
     i+=1
+
+cards=['2','3','4','5','6','7','8','9','T','J','Q','K','A']
+
+
 def highestCard(lineStr):
     done=False
     i=-1
