@@ -118,11 +118,12 @@ def fullHouse(lineStr):
         nums=[lineStr[i][0],lineStr[i][3],lineStr[i][6],lineStr[i][9],lineStr[i][12]]
         nums = sorted(nums, key=lambda x: cards.index(x))
         if (nums[0]==nums[1] and nums[2]==nums[1] and nums[3]==nums[4]):
-            type1=True
             if i==0:
                 P1=True
+                type1=True
             else:
                 P2=True
+                type2=True
         elif (nums[4]==nums[3] and nums[2]==nums[4] and nums[0]==nums[1]):
             if i==0:
                 P1=True
@@ -144,4 +145,42 @@ def fullHouse(lineStr):
             return 'P1'
         elif nums2[2]>nums1[2]:
             return 'P2'
-        elif type1 and nums1[3]>:
+        elif type1 and type2 and nums1[4]>nums2[4]:
+            return 'P1'
+        elif type1 and type2 and nums1[4]<nums2[4]:
+            return 'P2'
+        elif type1 and not type2 and nums1[4]<nums2[0]:
+            return 'P2'
+        elif type1 and not type2 and nums1[4]>nums2[0]:
+            return 'P1'
+        elif not type1 and type2 and nums1[0]>nums2[4]:
+            return 'P1'
+        elif not type1 and type2 and nums1[0]<nums2[4]:
+            return 'P2'
+        elif not type1 and not type2 and nums1[0]<nums2[0]:
+            return 'P2'
+        elif not type1 and not type2 and nums1[0]<nums2[0]:
+            return 'P1'
+        return highestCard(lineStr)
+
+def flush(lineStr):
+    i=0
+    P1=False
+    P2=False
+    i=0
+    while i<2:
+        suit=lineStr[i][1]
+        if lineStr[i][4]==suit and lineStr[i][7]==suit and lineStr[i][10]==suit and lineStr[i][13]==suit:
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        i+=1
+    if not P1 and not P2:
+        return None
+    elif not P1:
+        return 'P2'
+    elif not P2:
+        return 'P1'
+    return highestCard(lineStr)
+
