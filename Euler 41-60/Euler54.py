@@ -30,7 +30,7 @@ def highestCard(lineStr):
         elif cards.index(nums1[i])<cards.index(nums2[i]):
             return 'P2'
         i-=1
-    return 'TIE'
+    return 'P2'
 
 def royalFlush(lineStr):
     i=0
@@ -75,7 +75,7 @@ def straightFlush(lineStr):
             return 'P1'
         elif cards.index(nums1)[0]<cards.index(nums2[0]):
             return 'P2'
-        return 'TIE'
+        return 'P2'
     
 def fourOfAKind(lineStr):
     i=0
@@ -212,7 +212,7 @@ def straight(lineStr):
             return 'P1'
         elif cards.index(nums2[0])>cards.index(nums1[0]):
             return 'P2'
-        return 'TIE'
+        return 'P2'
 
 def threeOfAKind(lineStr):
     i=0
@@ -341,6 +341,54 @@ def onePair(lineStr):
         elif cards.index(nums1[place1])<cards.index(nums2[place2]):
             return 'P2'
         else:
-            print('goose')
             return highestCard(lineStr)
-    
+
+
+def checkWinner(lineStr):
+    if royalFlush(lineStr)=='P1':
+        return True
+    elif royalFlush(lineStr)=='P2':
+        return False
+    elif straightFlush(lineStr)=='P1':
+        return True
+    elif straightFlush(lineStr)=='P2':
+        return False
+    elif fourOfAKind(lineStr)=='P1':
+        return True
+    elif fourOfAKind(lineStr)=='P2':
+        return False
+    elif fullHouse(lineStr)=='P1':
+        return True
+    elif fullHouse(lineStr)=='P2':
+        return False
+    elif flush(lineStr)=='P1':
+        return True
+    elif flush(lineStr)=='P2':
+        return False
+    elif straight(lineStr)=='P1':
+        return True
+    elif straight(lineStr)=='P2':
+        return False
+    elif threeOfAKind(lineStr)=='P1':
+        return True
+    elif threeOfAKind(lineStr)=='P2':
+        return False
+    elif twoPairs(lineStr)=='P1':
+        return True
+    elif twoPairs(lineStr)=='P2':
+        return False
+    elif onePair(lineStr)=='P1':
+        return True
+    elif onePair(lineStr)=='P2':
+        return False
+    elif highestCard(lineStr)=='P1':
+        return True
+    return False
+
+total=0
+num=0
+while num<len(hands):
+    if checkWinner(hands[num]):
+        total+=1
+    num+=1
+print(total)
