@@ -17,7 +17,6 @@ while i<len(handsA):
 
 cards=['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
-
 def highestCard(lineStr):
     done=False
     i=-1
@@ -184,3 +183,104 @@ def flush(lineStr):
         return 'P1'
     return highestCard(lineStr)
 
+def straight(lineStr):
+    i=0
+    P1=False
+    P2=False
+    while i<2:
+        nums=[lineStr[i][0],lineStr[i][3],lineStr[i][6],lineStr[i][9],lineStr[i][12]]
+        nums = sorted(nums, key=lambda x: cards.index(x))
+        if cards.index(nums[0])+1==cards.index(nums[1]) and cards.index(nums[1])+1==cards.index(nums[2]) and cards.index(nums[2])+1==cards.index(nums[3]) and cards.index(nums[3])+1==cards.index(nums[4]):
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        i+=1
+    if not P1 and not P2:
+        return None
+    elif not P2:
+        return 'P1'
+    elif not P1:
+        return 'P2'
+    else:
+        nums1=[lineStr[0][0],lineStr[0][3],lineStr[0][6],lineStr[0][9],lineStr[0][12]]
+        nums1=sorted(nums1, key=lambda x: cards.index(x))
+        nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
+        nums2=sorted(nums2, key=lambda x: cards.index(x))
+        if nums1[0]>nums2[0]:
+            return 'P1'
+        elif nums2[0]>nums1[0]:
+            return 'P2'
+        return 'TIE'
+
+def threeOfAKind(lineStr):
+    i=0
+    P1=False
+    P2=False
+    while i<2:
+        nums=[lineStr[i][0],lineStr[i][3],lineStr[i][6],lineStr[i][9],lineStr[i][12]]
+        nums = sorted(nums, key=lambda x: cards.index(x))
+        if (nums[0]==nums[1] and nums[0]==nums[2]) or (nums[1]==nums[2] and nums[1]==nums[3]) or (nums[2]==nums[3] and nums[2]==nums[4]):
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        i+=1
+    if not P1 and not P2:
+        return None
+    elif not P2:
+        return 'P1'
+    elif not P1:
+        return 'P2'
+    else:
+        nums1 = [lineStr[0][0],lineStr[0][3],lineStr[0][6],lineStr[0][9],lineStr[0][12]]
+        nums1 = sorted(nums1, key=lambda x: cards.index(x))
+        nums2 = [lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
+        nums2 = sorted(nums2, key=lambda x: cards.index(x))
+        if nums1[2]>nums2[2]:
+            return 'P1'
+        elif nums2[2]>nums1[2]:
+            return 'P2'
+        return highestCard(lineStr)
+    
+def twoPairs(lineStr):
+    i=0
+    P1=False
+    P2=False
+    while i<2:
+        nums=[lineStr[i][0],lineStr[i][3],lineStr[i][6],lineStr[i][9],lineStr[i][12]]
+        nums=sorted(nums, key=lambda x: cards.index(x))
+        if (nums[0]==nums[1] and nums[2]==nums[3]):
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        if (nums[0]==nums[1] and nums[3]==nums[4]) or (nums[1]==nums[2] and nums[3]==nums[4]):
+            if i==0:
+                P1=True
+            else:
+                P2=True
+        i+=1
+    if not P1 and not P2:
+        return None
+    elif not P1:
+        return 'P2'
+    elif not P2:
+        return 'P1'
+    else:
+        nums1=[lineStr[0][0],lineStr[0][3],lineStr[0][6],lineStr[0][9],lineStr[0][12]]
+        nums1=sorted(nums1, key=lambda x: cards.index(x))
+        nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
+        nums2=sorted(nums2, key=lambda x: cards.index(x))
+        if nums1[3]>nums2[3]:
+            return 'P1'
+        elif nums1[3]<nums2[3]:
+            return 'P2'
+        else:
+            if nums1[1]>nums2[1]:
+                return 'P1'
+            elif nums1[1]<nums2[1]:
+                return 'P2'
+            return highestCard(lineStr)
+        
+print(twoPairs(l))
