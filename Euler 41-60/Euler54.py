@@ -70,9 +70,9 @@ def straightFlush(lineStr):
         nums1=sorted(nums1, key=lambda x: cards.index(x))
         nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2=sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[0]>nums2[0]:
+        if cards.index(nums1)[0]>cards.index(nums2[0]):
             return 'P1'
-        elif nums2[0]>nums1[0]:
+        elif cards.index(nums1)[0]<cards.index(nums2[0]):
             return 'P2'
         return 'TIE'
     
@@ -100,9 +100,9 @@ def fourOfAKind(lineStr):
         nums1 = sorted(nums1, key=lambda x: cards.index(x))
         nums2 = [lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2 = sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[1]>nums2[1]:
+        if cards.index(nums1[1])>cards.index(nums2[1]):
             return 'P1'
-        elif nums2[1]>nums1[1]:
+        elif cards.index(nums1[1])<cards.index(nums2[1]):
             return 'P2'
         else:
             return highestCard(lineStr)
@@ -140,25 +140,25 @@ def fullHouse(lineStr):
         nums1 = sorted(nums1, key=lambda x: cards.index(x))
         nums2 = [lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2 = sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[2]>nums2[2]:
+        if cards.index(nums1[2])>cards.index(nums2[2]):
             return 'P1'
-        elif nums2[2]>nums1[2]:
+        elif cards.index(nums1[2])<cards.index(nums2[2]):
             return 'P2'
-        elif type1 and type2 and nums1[4]>nums2[4]:
+        elif type1 and type2 and cards.index(nums1[4])>cards.index(nums2[4]):
             return 'P1'
-        elif type1 and type2 and nums1[4]<nums2[4]:
+        elif type1 and type2 and cards.index(nums1[4])<cards.index(nums2[4]):
             return 'P2'
-        elif type1 and not type2 and nums1[4]<nums2[0]:
+        elif type1 and not type2 and cards.index(nums1[4])<cards.index(nums2[0]):
             return 'P2'
-        elif type1 and not type2 and nums1[4]>nums2[0]:
+        elif type1 and not type2 and cards.index(nums1[4])>cards.index(nums2[0]):
             return 'P1'
-        elif not type1 and type2 and nums1[0]>nums2[4]:
+        elif not type1 and type2 and cards.index(nums1[0])>cards.index(nums2[4]):
             return 'P1'
-        elif not type1 and type2 and nums1[0]<nums2[4]:
+        elif not type1 and type2 and cards.index(nums1[0])<cards.index(nums2[4]):
             return 'P2'
-        elif not type1 and not type2 and nums1[0]<nums2[0]:
+        elif not type1 and not type2 and cards.index(nums1[0])<cards.index(nums2[0]):
             return 'P2'
-        elif not type1 and not type2 and nums1[0]<nums2[0]:
+        elif not type1 and not type2 and cards.index(nums1[0])>cards.index(nums2[0]):
             return 'P1'
         return highestCard(lineStr)
 
@@ -207,9 +207,9 @@ def straight(lineStr):
         nums1=sorted(nums1, key=lambda x: cards.index(x))
         nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2=sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[0]>nums2[0]:
+        if cards.index(nums1[0])>cards.index(nums2[0]):
             return 'P1'
-        elif nums2[0]>nums1[0]:
+        elif cards.index(nums2[0])>cards.index(nums1[0]):
             return 'P2'
         return 'TIE'
 
@@ -237,9 +237,9 @@ def threeOfAKind(lineStr):
         nums1 = sorted(nums1, key=lambda x: cards.index(x))
         nums2 = [lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2 = sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[2]>nums2[2]:
+        if cards.index(nums1[2])>cards.index(nums2[2]):
             return 'P1'
-        elif nums2[2]>nums1[2]:
+        elif cards.index(nums2[2])>cards.index(nums1[2]):
             return 'P2'
         return highestCard(lineStr)
     
@@ -272,15 +272,15 @@ def twoPairs(lineStr):
         nums1=sorted(nums1, key=lambda x: cards.index(x))
         nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
         nums2=sorted(nums2, key=lambda x: cards.index(x))
-        if nums1[3]>nums2[3]:
+        if cards.index(nums1[3])>cards.index(nums2[3]):
             return 'P1'
-        elif nums1[3]<nums2[3]:
+        elif cards.index(nums1[3])<cards.index(nums2[3]):
             return 'P2'
         else:
-            if nums1[1]>nums2[1]:
+            if cards.index(nums1[1])>cards.index(nums2[1]):
                 return 'P1'
-            elif nums1[1]<nums2[1]:
+            elif cards.index(nums1[1])<cards.index(nums2[1]):
                 return 'P2'
             return highestCard(lineStr)
         
-print(twoPairs(l))
+print(twoPairs(['AC AD JC TC TC','AC 5C AC JC JC']))
