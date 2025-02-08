@@ -24,12 +24,13 @@ def highestCard(lineStr):
     nums1 = sorted(nums1, key=lambda x: cards.index(x))
     nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
     nums2 = sorted(nums2, key=lambda x: cards.index(x))
-    while not done:
+    while not done and i>-6:
         if cards.index(nums1[i])>cards.index(nums2[i]):
             return 'P1'
         elif cards.index(nums1[i])<cards.index(nums2[i]):
             return 'P2'
         i-=1
+    return 'TIE'
 
 def royalFlush(lineStr):
     i=0
@@ -283,4 +284,63 @@ def twoPairs(lineStr):
                 return 'P2'
             return highestCard(lineStr)
         
-print(twoPairs(['AC AD JC TC TC','AC 5C AC JC JC']))
+def onePair(lineStr):
+    i=0
+    P1=False
+    P2=False
+    place1=0
+    place2=0
+    while i<2:
+        nums=[lineStr[i][0],lineStr[i][3],lineStr[i][6],lineStr[i][9],lineStr[i][12]]
+        nums=sorted(nums, key=lambda x: cards.index(x))
+        if nums[0]==nums[1]:
+            if i==0:
+                P1=True
+                place1=0
+            else:
+                P2=True
+                place2=0
+        if nums[1]==nums[2]:
+            place=1
+            if i==0:
+                P1=True
+                place1=1
+            else:
+                P2=True
+                place2=1
+        if nums[2]==nums[3]:
+            place=2
+            if i==0:
+                P1=True
+                place1=2
+            else:
+                P2=True
+                place2=2
+        if nums[3]==nums[4]:
+            place=3
+            if i==0:
+                P1=True
+                place1=3
+            else:
+                P2=True
+                place2=3
+        i+=1
+    if not P1 and not P2:
+        return None
+    elif not P1:
+        return 'P2'
+    elif not P2:
+        return 'P1'
+    else:
+        nums1=[lineStr[0][0],lineStr[0][3],lineStr[0][6],lineStr[0][9],lineStr[0][12]]
+        nums1=sorted(nums1, key=lambda x: cards.index(x))
+        nums2=[lineStr[1][0],lineStr[1][3],lineStr[1][6],lineStr[1][9],lineStr[1][12]]
+        nums2=sorted(nums2, key=lambda x: cards.index(x))
+        if cards.index(nums1[place1])>cards.index(nums2[place2]):
+            return 'P1'
+        elif cards.index(nums1[place1])<cards.index(nums2[place2]):
+            return 'P2'
+        else:
+            print('goose')
+            return highestCard(lineStr)
+    
