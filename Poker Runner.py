@@ -1,20 +1,4 @@
-from pathlib import Path
-script_dir = Path(__file__).parent
-handsO= script_dir / "Euler54 Poker Hands.txt"
-handsO=handsO.open("r")
-i=0
-handsA=handsO.readlines()
-i=0
-while i<len(handsA):
-    handsA[i]=handsA[i][:-1]
-    i+=1
-
-i=0
-hands=[]
-while i<len(handsA):
-    hands.append([handsA[i][:14],handsA[i][-14:]])
-    i+=1
-
+from random import randint
 cards=['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
 def highestCard(lineStr):
@@ -394,10 +378,43 @@ def checkWinner(lineStr):
         return True
     return False
 
-total=0
-num=0
-while num<len(hands):
-    if checkWinner(hands[num]):
-        total+=1
-    num+=1
-print(total)
+balence=1000
+suits=['S','H','D','C']
+while True:
+    print("Balence ",balence)
+    hand1=f"{cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]}"
+    print(hand1)
+    hand2=f"{cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]} {cards[randint(0,12)]}{suits[randint(0,3)]}"
+    bet=input("Place Bet or FOLD   ")
+    if bet=="FOLD":
+        balence-=bet
+        continue
+    bet=int(bet)
+    if bet>balence:
+        print("TOO HIGH")
+        continue
+    if not checkWinner([hand1,hand2]):
+        print(f"You have been raised to {bet+randint(1,100)}")
+        raises=input("Fold or Raise   ")
+        if raises=="FOLD":
+            balence-=bet
+            continue
+        raises=int(raises)
+        bet+=raises
+        print(bet)
+        if bet>balence:
+            print("TOO HIGH")
+            continue
+        else:
+            print(f"You have been raised to {bet+randint(0,100)}")
+            raises=input("Fold or Raise   ")
+            if raises=="FOLD":
+                balence-=bet
+                continue
+            raises=int(raises)
+            bet+=raises
+            if bet>balence:
+                print("TOO HIGH")
+                continue
+    else:
+        print("FOLD!")
