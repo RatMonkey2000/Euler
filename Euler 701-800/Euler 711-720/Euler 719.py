@@ -32,19 +32,23 @@ def isnatural(num):
         splits.append(None)
         i+=1
     done=False
-    while splits[-1]==None and not done:
+    while not done:
         if listWorks(splits)==sqrt(num):
             done=True
         splits=nextPerm(splits)
+        if splits==False:
+            break
     if done:
         return True
     return False
     
-num=101
-Sum=41333
-while num<1000001:
+num=4
+Sum=0
+while num<101:
     if num%10000==0:
         print(num/10000)
     if isnatural(num**2):
+        print(num**2)
         Sum+=num**2
     num+=1
+print(Sum)
