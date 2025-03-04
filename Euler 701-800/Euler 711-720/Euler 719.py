@@ -44,7 +44,7 @@ def isnatural(num):
     
 num=101
 Sum=41333
-while num<=1000000:
+while num<1000001:
     if isnatural(num**2):
         Sum+=num**2
     num+=1
