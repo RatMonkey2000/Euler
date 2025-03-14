@@ -40,7 +40,6 @@ def isnatural(num):
         if splits==False:
             break
     if done and len(splits)>1:
-        print(splits)
         return True
     return False
     
@@ -48,7 +47,7 @@ num=101
 Sum=41333
 while num<1000001:
     if isnatural(num**2):
-        Sum+=num**2
         print(num**2)
+        Sum+=num**2
     num+=1
 print(Sum)
