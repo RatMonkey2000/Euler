@@ -4,7 +4,8 @@ def listWorks(listi):
     i=0
     sumNum=0
     while i<len(listi):
-        if listi[i]!=None:
+        print(listi[i])
+        if listi[i]!=None and listi[i]!='00' and listi[i]!='000' and listi[i]!='0000' and listi[i]!='00000' and listi[i]!='000000':
             sumNum+=int(listi[i])
         i+=1
     return sumNum
@@ -35,17 +36,21 @@ def isnatural(num):
     while not done:
         if listWorks(splits)==sqrt(num):
             done=True
+            break
         splits=nextPerm(splits)
         if splits==False:
             break
     if done:
+        print(splits)
         return True
     return False
     
-num=101
+"""num=101
 Sum=41333
 while num<1000001:
     if isnatural(num**2):
+        print(num)
         Sum+=num**2
     num+=1
-print(Sum)
+print(Sum)"""
+print(isnatural(10000000000))
