@@ -4,5 +4,9 @@ triangle=['59','73 41','52 40 09','26 53 06 34','10 51 87 86 81','61 95 66 57 25
 while len(triangle)>1:
     i=0
     while i<len(triangle):
-        if triangle[-1][3*i]:
+        if triangle[-1][3*i:3*i+2]>triangle[-1][3*i+3:3*i+5]:
+            triangle[-2][i:i+2]=int(triangle[-2][i:i+2])+int(triangle[-1][3*i:3*i+2])
+        else:
+            triangle[-2][i:i+2]=int(triangle[-2][i:i+2])+int(triangle[-1][3*i+3:3*i+5])
         i+=1
+    triangle.pop(-1)
