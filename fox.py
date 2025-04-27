@@ -1,7 +1,11 @@
 def isWrong():
-  if (fox==chicken and chicken!=farmer) or (chicken==grain and grain!=farmer):
-    return True
-  return False
+  if fox==chicken and chicken!=farmer:
+    print("Fox eats chicken. You Lose!!!")
+    exit()
+  elif grain==chicken and chicken!=farmer:
+    print("Chicken eats grain. You Lose!!!")
+    exit()
+
 def state():
   print("On Wrong side of River:")
   if fox==0:
@@ -21,6 +25,7 @@ def state():
     print("grain")
   if farmer==1:
     print("farmer")
+    
 def isCorrect():
   if fox==1 and chicken==1 and grain==1 and farmer==1:
     return True
@@ -62,7 +67,6 @@ elif choise=="Grain" or choise=="grain" or choise=="GRAIN":
 else:
   print("Invalid! Start again!")
   exit()
-print(isCorrect())
 while not isCorrect:
   state()
   choise=input("Choose:")
@@ -89,8 +93,6 @@ while not isCorrect:
     else:
       print("Invalid! Start again!")
       exit()
+  iswrong()
   
-
-  
-
-  
+print("You Win!!!)
