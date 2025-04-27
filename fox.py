@@ -35,7 +35,7 @@ def isCorrect():
 print("""
 A fox, chicken and a bag of grain wait by the side of a river.
 Which item will you take in your rowboat to the other side?
-fox, chicken, grain or none?""")
+Fox, Chicken, Grain or None?""")
 choise=input("Choose: ")
 fox=0
 chicken=0
@@ -70,6 +70,7 @@ else:
 while not isCorrect():
   isWrong()
   state()
+  print("Fox, Chicken, Grain, or None?")
   choise=input("Choose: ")
   if choise=="None" or choise=="none" or choise=="NONE":
     farmer=(farmer+1)%2
