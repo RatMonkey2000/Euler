@@ -9,22 +9,22 @@ def isWrong():
 def state():
   print("On Wrong side of River:")
   if fox==0:
-    print("fox")
+    print(" Fox")
   if chicken==0:
-    print("chicken")
+    print(" Chicken")
   if grain==0:
-    print("grain")
+    print(" Grain")
   if farmer==0:
-    print("farmer")
+    print(" Farmer")
   print("On Right Side")
   if fox==1:
-    print("fox")
+    print(" Fox")
   if chicken==1:
-    print("chicken")
+    print(" Chicken")
   if grain==1:
-    print("grain")
+    print(" Grain")
   if farmer==1:
-    print("farmer")
+    print(" Farmer")
     
 def isCorrect():
   if fox==1 and chicken==1 and grain==1 and farmer==1:
@@ -36,7 +36,7 @@ print("""
 A fox, chicken and a bag of grain wait by the side of a river.
 Which item will you take in your rowboat to the other side?
 fox, chicken, grain or farmer?""")
-choise=input("Choose:")
+choise=input("Choose: ")
 fox=0
 chicken=0
 grain=0
@@ -53,7 +53,7 @@ elif choise=="Fox" or choise=="fox" or choise=="FOX":
 elif choise=="Chicken" or choise=="chicken" or choise=="CHICKEN":
   if chicken==farmer:
     farmer=(farmer+1)%2
-    chicken=(chicken)%2
+    chicken=(chicken+1)%2
   else:
     print("Invalid! Start again!")
     exit()
@@ -67,9 +67,10 @@ elif choise=="Grain" or choise=="grain" or choise=="GRAIN":
 else:
   print("Invalid! Start again!")
   exit()
-while not isCorrect:
+while not isCorrect():
+  isWrong()
   state()
-  choise=input("Choose:")
+  choise=input("Choose: ")
   if choise=="Farmer" or choise=="farmer" or choise=="FARMER":
     farmer=(farmer+1)%2
   elif choise=="Fox" or choise=="fox" or choise=="FOX":
@@ -82,7 +83,7 @@ while not isCorrect:
   elif choise=="Chicken" or choise=="chicken" or choise=="CHICKEN":
     if chicken==farmer:
       farmer=(farmer+1)%2
-      chicken=(chicken)%2
+      chicken=(chicken+1)%2
     else:
       print("Invalid! Start again!")
       exit()
@@ -93,6 +94,5 @@ while not isCorrect:
     else:
       print("Invalid! Start again!")
       exit()
-  iswrong()
   
-print("You Win!!!)
+print("You Win!!!")
