@@ -15,7 +15,7 @@ def state():
   if grain==0:
     print(" Grain")
   if farmer==0:
-    print(" Farmer")
+    print(" You")
   print("On Right Side")
   if fox==1:
     print(" Fox")
@@ -24,7 +24,7 @@ def state():
   if grain==1:
     print(" Grain")
   if farmer==1:
-    print(" Farmer")
+    print(" You")
     
 def isCorrect():
   if fox==1 and chicken==1 and grain==1 and farmer==1:
@@ -35,13 +35,13 @@ def isCorrect():
 print("""
 A fox, chicken and a bag of grain wait by the side of a river.
 Which item will you take in your rowboat to the other side?
-fox, chicken, grain or farmer?""")
+fox, chicken, grain or none?""")
 choise=input("Choose: ")
 fox=0
 chicken=0
 grain=0
 farmer=0
-if choise=="Farmer" or choise=="farmer" or choise=="FARMER":
+if choise=="None" or choise=="none" or choise=="NONE":
   farmer=(farmer+1)%2
 elif choise=="Fox" or choise=="fox" or choise=="FOX":
   if fox==farmer:
@@ -71,7 +71,7 @@ while not isCorrect():
   isWrong()
   state()
   choise=input("Choose: ")
-  if choise=="Farmer" or choise=="farmer" or choise=="FARMER":
+  if choise=="None" or choise=="none" or choise=="NONE":
     farmer=(farmer+1)%2
   elif choise=="Fox" or choise=="fox" or choise=="FOX":
     if fox==farmer:
