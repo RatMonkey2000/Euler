@@ -1,10 +1,10 @@
 from math import sqrt
+import threading
 
 def listWorks(listi):
     i=0
     sumNum=0
     while i<len(listi):
-        print(listi[i])
         if listi[i]!=None and listi[i]!='00' and listi[i]!='000' and listi[i]!='0000' and listi[i]!='00000' and listi[i]!='000000':
             sumNum+=int(listi[i])
         i+=1
@@ -44,11 +44,68 @@ def isnatural(num):
         return True
     return False
     
-"""num=101
-Sum=41333
-while num<1000001:
-    if isnatural(num**2):
-        Sum+=num**2
-    num+=1
-print(Sum)"""
-print(isnatural(10000000000))
+
+
+def check1():
+    num=3
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+def check1():
+    num=4
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+def check1():
+    num=5
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+def check1():
+    num=6
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+def check1():
+    num=7
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+def check1():
+    num=8
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+def check1():
+    num=9
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+def check1():
+    num=10
+    Sum=0
+    while num<101:
+        if isnatural(num**2):
+            Sum+=num**2
+        num+=8
+
+t1=threading.Thread(check1,)
