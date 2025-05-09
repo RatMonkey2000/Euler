@@ -46,66 +46,103 @@ def isnatural(num):
     
 
 
+total=0
+
 def check1():
+    global total
     num=3
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-
-def check1():
+    total+=Sum
+def check2():
+    global total
     num=4
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-def check1():
+    total+=Sum
+def check3():
+    global total
     num=5
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-
-def check1():
+    total+=Sum
+def check4():
+    global total
     num=6
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-
-def check1():
+    total+=Sum
+def check5():
+    global total
     num=7
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-
-def check1():
+    total+=Sum
+def check6():
+    global total
     num=8
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-
-def check1():
+    total+=Sum
+def check7():
+    global total
     num=9
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
-def check1():
+    total+=Sum
+def check8():
+    global total
     num=10
     Sum=0
-    while num<101:
+    while num<1000001:
         if isnatural(num**2):
             Sum+=num**2
         num+=8
+    total+=Sum
 
-t1=threading.Thread(check1,)
+t1=threading.Thread(target=check1)
+t2=threading.Thread(target=check2)
+t3=threading.Thread(target=check3)
+t4=threading.Thread(target=check4)
+t5=threading.Thread(target=check5)
+t6=threading.Thread(target=check6)
+t7=threading.Thread(target=check7)
+t8=threading.Thread(target=check8)
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+t5.start()
+t6.start()
+t7.start()
+t8.start()
+t1.join()
+t2.join()
+t3.join()
+t4.join()
+t5.join()
+t6.join()
+t7.join()
+t8.join()
+print(total)
