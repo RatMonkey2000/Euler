@@ -1,5 +1,5 @@
 from math import sqrt
-import threading
+import multiprocessing
 
 def listWorks(listi):
     i=0
@@ -47,88 +47,89 @@ def isnatural(num):
 
 
 total=0
-
+Sum1=0
+Sum2=0
+Sum3=0
+Sum4=0
+Sum5=0
+Sum6=0
+Sum7=0
+Sum8=0
 def check1():
     global total
     num=3
-    Sum=0
+    global Sum1
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum1+=num**2
         num+=8
-    total+=Sum
 def check2():
     global total
     num=4
-    Sum=0
+    global Sum2
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum2+=num**2
         num+=8
-    total+=Sum
 def check3():
     global total
     num=5
-    Sum=0
+    Sum3=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum3+=num**2
         num+=8
-    total+=Sum
 def check4():
     global total
     num=6
-    Sum=0
+    Sum4=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum4+=num**2
         num+=8
-    total+=Sum
 def check5():
     global total
     num=7
-    Sum=0
+    Sum5=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum5+=num**2
         num+=8
-    total+=Sum
 def check6():
     global total
     num=8
-    Sum=0
+    Sum6=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum6+=num**2
         num+=8
-    total+=Sum
 def check7():
     global total
     num=9
-    Sum=0
+    Sum7=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum7+=num**2
         num+=8
-    total+=Sum
 def check8():
     global total
     num=10
-    Sum=0
+    Sum8=0
     while num<1000001:
         if isnatural(num**2):
-            Sum+=num**2
+            Sum8+=num**2
         num+=8
-    total+=Sum
+    print(Sum8)
+    
 
-t1=threading.Thread(target=check1)
-t2=threading.Thread(target=check2)
-t3=threading.Thread(target=check3)
-t4=threading.Thread(target=check4)
-t5=threading.Thread(target=check5)
-t6=threading.Thread(target=check6)
-t7=threading.Thread(target=check7)
-t8=threading.Thread(target=check8)
+t1=multiprocessing.Process(target=check1)
+t2=multiprocessing.Process(target=check2)
+t3=multiprocessing.Process(target=check3)
+t4=multiprocessing.Process(target=check4)
+t5=multiprocessing.Process(target=check5)
+t6=multiprocessing.Process(target=check6)
+t7=multiprocessing.Process(target=check7)
+t8=multiprocessing.Process(target=check8)
 t1.start()
 t2.start()
 t3.start()
@@ -145,4 +146,4 @@ t5.join()
 t6.join()
 t7.join()
 t8.join()
-print(total)
+print(Sum1+Sum2+Sum3+Sum4+Sum5+Sum6+Sum7+Sum8)
